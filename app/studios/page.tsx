@@ -5,7 +5,7 @@ export default function StudiosPage() {
   return (
     <div className="min-h-screen">
       <SiteChrome />
-      <div className="h-[280px]" />
+      <div className="h-[170px] sm:h-[280px]" />
 
       <section className="content-shell">
         <h1 className="mb-8 text-3xl tracking-[0.25em] uppercase sm:text-4xl">The Space</h1>

@@ -6,9 +6,9 @@ export default function Home() {
     <div className="min-h-screen">
       <SiteChrome />
 
-      <div className="h-[280px]" />
+      <div className="h-[170px] sm:h-[280px]" />
       <section
-        className="h-[75vh] w-full border-b border-white/10 bg-cover bg-center"
+        className="h-[55vh] w-full border-b border-white/10 bg-cover bg-center sm:h-[75vh]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(22, 59, 51, 0.2), rgba(22, 59, 51, 0.5)), url('/images/studio-a.jpg')",

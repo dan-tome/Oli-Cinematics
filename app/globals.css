@@ -42,3 +42,13 @@ h4 {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.9;
 }
+
+@media (max-width: 640px) {
+  .content-shell {
+    padding: 64px 18px;
+  }
+
+  .muted-copy {
+    line-height: 1.7;
+  }
+}

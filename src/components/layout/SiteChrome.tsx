@@ -29,8 +29,8 @@ export function SiteChrome() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 z-40 flex w-full items-center border-b border-white/10 bg-[#0d4039] px-6 transition-all duration-300 sm:px-10 ${
-          isCollapsed ? "h-[88px]" : "h-[280px]"
+        className={`fixed top-0 left-0 z-40 flex w-full items-center border-b border-white/10 bg-[#0d4039] px-4 transition-all duration-300 sm:px-10 ${
+          isCollapsed ? "h-[72px] sm:h-[88px]" : "h-[170px] sm:h-[280px]"
         }`}
       >
         <Link href="/" aria-label="Go to home page" className="inline-flex items-center">
@@ -41,7 +41,7 @@ export function SiteChrome() {
             height={280}
             priority
             className={`object-contain transition-all duration-300 ${
-              isCollapsed ? "h-[59px] w-[59px]" : "h-[236px] w-[236px]"
+              isCollapsed ? "h-[50px] w-[50px] sm:h-[59px] sm:w-[59px]" : "h-[138px] w-[138px] sm:h-[236px] sm:w-[236px]"
             }`}
           />
         </Link>
@@ -52,7 +52,7 @@ export function SiteChrome() {
             width={1140}
             height={290}
             className={`w-auto object-contain transition-all duration-300 ${
-              isCollapsed ? "h-[59px]" : "h-[86px] sm:h-[110px]"
+              isCollapsed ? "h-[44px] sm:h-[59px]" : "h-[54px] sm:h-[110px]"
             }`}
           />
         </div>
@@ -60,7 +60,7 @@ export function SiteChrome() {
 
       <div
         className={`fixed right-[25px] z-50 transition-all duration-300 ${
-          isCollapsed ? "top-[22px]" : "top-[120px]"
+          isCollapsed ? "top-[14px] sm:top-[22px]" : "top-[62px] sm:top-[120px]"
         }`}
       >
         <button
@@ -77,7 +77,7 @@ export function SiteChrome() {
 
       <nav
         className={`fixed right-[25px] z-40 w-[220px] border border-white/10 bg-[#0a3631] py-2 shadow-2xl transition-all duration-300 ${
-          isCollapsed ? "top-[74px]" : "top-[152px]"
+          isCollapsed ? "top-[62px] sm:top-[74px]" : "top-[118px] sm:top-[152px]"
         } ${open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2.5 opacity-0"}`}
       >
         {menuItems.map((item) => (

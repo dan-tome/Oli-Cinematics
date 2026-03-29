@@ -5,7 +5,7 @@ export default function SuccessPage() {
   return (
     <div className="min-h-screen">
       <SiteChrome />
-      <div className="h-[280px]" />
+      <div className="h-[170px] sm:h-[280px]" />
       <section className="content-shell">
         <h1 className="mb-6 text-3xl tracking-[0.2em] uppercase">Booking Confirmed</h1>
         <p className="muted-copy mb-10">
