@@ -26,7 +26,7 @@ export default function OliverPage() {
           that make footage feel premium.
         </p>
         <p className="muted-copy mb-5">
-          In the edit suite, he is fast, highly skilled, and an expertly at turning your dreams into 
+          In the edit suite, he is fast, highly skilled, and an expert at turning your dreams into 
           reality.
         </p>
         <p className="muted-copy">
