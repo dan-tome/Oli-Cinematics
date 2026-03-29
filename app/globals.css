@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --forest-green: #0d4039;
+  --forest-green-dark: #0a3631;
+  --white: #ffffff;
+  --background: var(--forest-green);
+  --foreground: var(--white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.content-shell {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 30px;
+  text-align: center;
+}
+
+.muted-copy {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.9;
+}

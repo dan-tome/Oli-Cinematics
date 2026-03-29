@@ -1,0 +1,10 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#14362f" />
+      <stop offset="100%" stop-color="#30665a" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g3)" />
+  <text x="80" y="170" fill="#ffffff" font-size="74" font-family="Arial, sans-serif" opacity="0.9">Studio C</text>
+</svg>
