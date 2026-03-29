@@ -68,3 +68,15 @@ This repo includes a Render blueprint: `render.yaml`.
    - Subscribe to `checkout.session.completed` and `checkout.session.expired`.
 
 After env vars are saved, trigger a redeploy so Next.js picks up all values.
+
+## Automatic Versioning on Deploy
+
+Each production build now generates a unique build version in the format:
+
+`<package-version>+<utc-timestamp>.<commit-hint>`
+
+Example:
+
+`0.1.0+20260329194512.a1b2c3d`
+
+This value is shown in the site footer and refreshes on every deployment automatically.
