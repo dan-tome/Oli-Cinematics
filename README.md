@@ -80,3 +80,15 @@ Example:
 `0.1.0+20260329194512.a1b2c3d`
 
 This value is shown in the site footer and refreshes on every deployment automatically.
+
+## Installable App (PWA)
+
+This project is configured as a Progressive Web App:
+- Manifest: `public/manifest.webmanifest`
+- Service worker: `public/sw.js`
+- Install icons: `public/pwa-192x192.png`, `public/pwa-512x512.png`
+
+How users install it:
+- **Android/Chrome:** tap browser menu -> **Install app**.
+- **iPhone/Safari:** tap Share -> **Add to Home Screen**.
+- **Desktop Chrome/Edge:** click install icon in address bar.
