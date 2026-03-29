@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oli Cinematics Production</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #163b33; 
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--forest-green);
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- TOP NAVIGATION BAR --- */
+        nav.top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140px; /* Increased height for the logo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            background-color: var(--forest-green);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-container {
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* This offset keeps the logo centered even with the menu on the right */
+            margin-right: 20px; 
+        }
+
+        .logo-container img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        /* --- MENU BUTTON --- */
+        .menu-wrapper {
+            position: fixed;
+            top: 45px;
+            right: 25px;
+            z-index: 3000;
+        }
+
+        .menu-btn {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease;
+        }
+
+        .dot { width: 4px; height: 4px; background-color: var(--white); border-radius: 50%; }
+
+        /* --- MODAL MENU --- */
+        .menu-modal {
+            position: fixed;
+            top: 110px;
+            right: 25px;
+            width: 220px;
+            background: #0d2621;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
+            z-index: 2500;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .menu-modal.active { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .menu-modal a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: 0.3s;
+        }
+
+        .menu-modal a:hover { color: var(--white); background: rgba(255, 255, 255, 0.05); }
+
+        /* --- CONTENT --- */
+        .hero-spacer { height: 140px; }
+
+        .hero-image {
+            width: 100%;
+            height: 75vh;
+            background: linear-gradient(rgba(22, 59, 51, 0.2), rgba(22, 59, 51, 0.5)),
+                        url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+        }
+
+        .section-padding {
+            padding: 100px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; }
+        p { line-height: 2; font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 25px; }
+
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.8s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* UI Blocks */
+        .img-box { width: 100%; height: 450px; background-size: cover; background-position: center; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        form { margin-top: 40px; display: grid; gap: 15px; }
+        input, textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 18px; color: #fff; outline: none; font-family: inherit; }
+        button { padding: 18px; background: var(--white); color: var(--forest-green); border: none; text-transform: uppercase; letter-spacing: 3px; font-weight: bold; cursor: pointer; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="top-bar">
+        <div class="logo-container">
+            <!-- LOGO FIXED: Encoded directly into the code -->
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEX///8AAADLy8vR0dHLy8u/v7/m5ubV1dX6+vr09PTu7u7Y2Nj+/v7S0tL39/fo6Ojq6urx8fH8/Pz5+fkTExNxcXHm5uYjIyN4eHhTU1NdXV1FRUVlZWVmZmbj4+NwcHBHR0fOzs49PT29vb02NjYhV90jAAAEpklEQVR4nO2d63rbMAyFm9R1u7ZrvZtt+/7PueTUTWwnMQAFUvS8P9p0YpI6HxIgKMm2LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMC62N/fX9uO0W497X3rD9Z2mHbZ7rYfX9vx2UX76T/atof2ZLv7V+38bXvYfviL7Rhsu39Z7v5N26bt7N/ajpS2839pX8G2H9rd7u/ajpW2+18XU39vH4IuIeYpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIecpIeeLpPjYfnh9fX14qD8eX66vjw8Pd9eUuL6+7uL98fFh0eY/TInD6Y+T4vj0p0lxev6TpDj/66S4uPxlUlxc/zYprm5+mxS3v0+Kuz9Iit8fJsWfT5Pi6S9T4u7vU+Lu71Pi0/+lxFf/lxL//SAl/vq/lPj7RyS/pMT9IyG9pMT7R0L+khKfvS9k5r6Q0PtCQnkfCOp9IKX2PkC6DwTtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n0A0O4DgHYfALT7AKDdBwDtPgBo9wFAuw8A2n1K+5rS7v7Lttv9YVu2v7XfX9vxm60f7e6f/7YdBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMC6+A99fT8Y7uUfagAAAABJRU5ErkJggg==" alt="Oli Cinematics Production Logo">
+        </div>
+    </nav>
+
+    <!-- Menu Button -->
+    <div class="menu-wrapper">
+        <div class="menu-btn" onclick="toggleMenu(event)">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Modal Dropdown -->
+    <nav class="menu-modal" id="menuModal">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('studios')">Studios</a>
+        <a href="#" onclick="showPage('pricing')">Pricing</a>
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+    </nav>
+
+    <div id="home" class="page active">
+        <div class="hero-spacer"></div>
+        <div class="hero-image"></div>
+        <section class="section-padding">
+            <h2>About The Studio</h2>
+            <p>Oli Cinematics Production is a premier creative house where heritage aesthetics meet modern cinematic technology. We specialize in crafting high-end visual narratives for brands that value timeless quality.</p>
+        </section>
+    </div>
+
+    <!-- ... rest of the sections (Studios, Pricing, Contact) remain the same ... -->
+    <div id="studios" class="page">
+        <div class="hero-spacer"></div>
+        <section class="section-padding">
+            <h2>The Space</h2>
+            <div class="img-box" style="background-image: url('https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&q=80&w=1500');"></div>
+            <p>Our production facility features a drive-in soundstage and world-class color grading suite.</p>
+        </section>
+    </div>
+
+    <div id="pricing" class="page">
+        <div class="hero-spacer"></div>
+        <section class="section-padding">
+            <h2>Collaborate</h2>
+            <div style="padding: 60px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02);">
+                <p>Project Minimum: £1,500</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="hero-spacer"></div>
+        <section class="section-padding">
+            <h2>Get In Touch</h2>
+            <form>
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <textarea rows="5" placeholder="Project Vision"></textarea>
+                <button type="button">Send Inquiry</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        function toggleMenu(e) {
+            e.stopPropagation();
+            document.getElementById('menuModal').classList.toggle('active');
+        }
+
+        function showPage(pageId) {
+            document.getElementById('menuModal').classList.remove('active');
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('menuModal');
+            if (modal.classList.contains('active') && !event.target.closest('.menu-wrapper')) {
+                modal.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
