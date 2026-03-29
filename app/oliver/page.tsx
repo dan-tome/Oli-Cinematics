@@ -33,6 +33,10 @@ export default function OliverPage() {
           He may be vertically challenged, but he compensates with expert skills, top-of-the-range
           equipment, and a loyal step ladder that has seen more shoots than most film directors.
         </p>
+        <p className="muted-copy mt-5 italic">
+          As his wife Miriana says, &quot;he is short but mighty - half the height, twice the ego, and
+          somehow still running the whole shoot from the top of a ladder.&quot;
+        </p>
       </section>
     </div>
   );
