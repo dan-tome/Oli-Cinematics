@@ -1,0 +1,50 @@
+name: Deploy to OCI
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (fail-fast validation)
+        run: npm run build
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.OCI_HOST }}
+          username: ${{ secrets.OCI_USER }}
+          key: ${{ secrets.OCI_SSH_KEY }}
+          port: 22
+          script: |
+            cd ${{ secrets.DEPLOY_DIR || '/home/ubuntu/oli-cinematics' }}
+            git fetch origin
+            git reset --hard origin/main
+            source ~/.nvm/nvm.sh
+            npm ci
+            npm run build
+            pm2 reload oli-cinematics --update-env || pm2 start pm2.config.js
+            pm2 save
+
+      - name: Print deployed commit SHA
+        run: echo "Deployed commit: ${{ github.sha }}"
