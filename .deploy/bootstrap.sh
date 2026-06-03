@@ -133,7 +133,7 @@ ok "iptables rules persisted"
 log "Section 7: Cloning Oli-Cinematics repository"
 
 # *** FILL THIS IN before running the script ***
-REPO_URL="YOUR_REPO_URL"   # e.g. https://github.com/yourusername/Oli-Cinematics.git
+REPO_URL="https://github.com/dan-tome/Oli-Cinematics.git"
 APP_DIR="/opt/oli-cinematics"
 
 if [[ "$REPO_URL" == "YOUR_REPO_URL" ]]; then
