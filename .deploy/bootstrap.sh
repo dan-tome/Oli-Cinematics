@@ -8,7 +8,7 @@
 # After running this script you still need to:
 #   1. Fill in .env.local inside the repo (see section 8 below)
 #   2. Point your DNS A/AAAA records to this server's public IP
-#   3. Run: sudo certbot --nginx -d YOUR_DOMAIN -d www.YOUR_DOMAIN
+#   3. Run: sudo certbot --nginx -d olicinematics.com -d www.olicinematics.com
 # =============================================================================
 set -euo pipefail
 
@@ -278,7 +278,7 @@ echo "  2. Point your domain's DNS A record to this server's"
 echo "     public IP address and wait for propagation."
 echo ""
 echo "  3. Obtain a TLS certificate with Certbot:"
-echo "       sudo certbot --nginx -d YOUR_DOMAIN -d www.YOUR_DOMAIN"
+echo "       sudo certbot --nginx -d olicinematics.com -d www.olicinematics.com"
 echo ""
 echo "  4. Verify the app is running:"
 echo "       pm2 status"
