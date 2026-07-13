@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative h-[78vh] w-full overflow-hidden border-b border-white/10">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-[position:24%_center] sm:bg-center"
           style={{
             backgroundImage:
               "linear-gradient(96deg, rgba(246,244,240,0.9) 0%, rgba(246,244,240,0.62) 38%, rgba(246,244,240,0.12) 62%, rgba(246,244,240,0) 75%), url('/images/infinity-cove.jpg')",
