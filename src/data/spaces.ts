@@ -48,7 +48,7 @@ export const seedSpaces: Space[] = [
     ],
     amenities: ["Client seating area", "Tea & coffee", "WiFi"],
     useCases: ["Podcasts", "Interviews", "Live sessions", "YouTube"],
-    image: "/images/studio-d.svg",
+    image: "/images/space-one.jpg",
     category: "Audio",
   },
   {
