@@ -28,7 +28,7 @@ export default function Home() {
             <br />
             Four spaces that transform.
           </h1>
-          <div className="fade-up fade-up-delay-3 mt-10 flex flex-wrap gap-4">
+          <div className="fade-up fade-up-delay-3 mt-24 flex flex-wrap gap-4 sm:mt-44">
             <Link href="/book" className="btn-dark" data-testid="hero-book-btn">
               Book a Space
             </Link>
