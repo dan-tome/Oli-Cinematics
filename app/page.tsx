@@ -15,7 +15,7 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 100%), url('/images/studio-a.jpg')",
+              "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.78) 100%), url('/images/infinity-cove.jpg')",
           }}
         />
         <div className="relative z-10 mx-auto flex h-full max-w-[1120px] flex-col justify-end px-6 pb-16 sm:px-10 sm:pb-24">

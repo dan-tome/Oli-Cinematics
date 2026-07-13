@@ -27,7 +27,7 @@ export const seedSpaces: Space[] = [
     ],
     amenities: ["Client seating area", "Tea & coffee", "WiFi"],
     useCases: ["Music videos", "Fashion & editorial", "Commercials", "E-commerce", "Dance & movement"],
-    image: "/images/studio-a.jpg",
+    image: "/images/infinity-cove.jpg",
     category: "Studio",
   },
   {
