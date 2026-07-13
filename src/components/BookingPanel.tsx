@@ -158,7 +158,7 @@ export function BookingPanel() {
           <StepBadge index={1} done={stepDone.space} />
           <h2 className="text-2xl">Choose a space</h2>
         </div>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-testid="space-picker">
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-testid="space-picker">
           {spaces.map((space) => {
             const active = space.id === selectedSpaceId;
             return (
@@ -185,7 +185,7 @@ export function BookingPanel() {
                   <p className="eyebrow">{space.tagline}</p>
                   <p className="mt-1 text-lg" style={{ fontFamily: "var(--font-playfair)" }}>{space.name}</p>
                   <p className="mt-1 text-[11px] tracking-[0.24em] uppercase text-white/60">
-                    ${(space.hourlyRate / 100).toFixed(0)}/hr
+                    £{(space.hourlyRate / 100).toFixed(0)}/hr
                   </p>
                 </div>
               </button>
@@ -220,7 +220,7 @@ export function BookingPanel() {
                       {svc.name.split("—")[1]?.trim() ?? svc.name}
                     </p>
                     <span className="text-sm tracking-[0.2em] uppercase text-white/80">
-                      ${(svc.price / 100).toFixed(0)}
+                      £{(svc.price / 100).toFixed(0)}
                     </span>
                   </div>
                   <p className="muted-copy mt-2 text-sm">{hours}-hour session · {svc.description}</p>
@@ -292,7 +292,7 @@ export function BookingPanel() {
                 <div><span className="text-white/50 uppercase text-[10px] tracking-[0.28em]">Space</span><p className="mt-1">{selectedSpace.name}</p></div>
                 <div><span className="text-white/50 uppercase text-[10px] tracking-[0.28em]">Package</span><p className="mt-1">{selectedService.name.split("—")[1]?.trim() ?? selectedService.name}</p></div>
                 <div><span className="text-white/50 uppercase text-[10px] tracking-[0.28em]">Date</span><p className="mt-1">{date}</p></div>
-                <div><span className="text-white/50 uppercase text-[10px] tracking-[0.28em]">Total</span><p className="mt-1">${(selectedService.price / 100).toFixed(2)}</p></div>
+                <div><span className="text-white/50 uppercase text-[10px] tracking-[0.28em]">Total</span><p className="mt-1">£{(selectedService.price / 100).toFixed(2)}</p></div>
               </div>
             </div>
           )}

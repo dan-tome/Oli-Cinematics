@@ -17,7 +17,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Oli Cinematics Production",
-  description: "Studio booking and portfolio",
+  description:
+    "Film & photography studio hire in Wembley, London — a seamless white infinity cove and four flexible panel-set spaces, each bookable individually.",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/logo-mark-bw.png",

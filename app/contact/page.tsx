@@ -52,7 +52,8 @@ export default function ContactPage() {
               <div>
                 <p className="eyebrow">Studio</p>
                 <p className="mt-2 text-white/85">Oli Cinematics Production</p>
-                <p className="text-white/60">By appointment only</p>
+                <p className="text-white/60">Wembley, London · By appointment only</p>
+                <p className="text-white/60">Exact address shared on booking</p>
               </div>
               <div>
                 <p className="eyebrow">Email</p>

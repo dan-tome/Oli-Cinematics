@@ -19,18 +19,19 @@ export default function Home() {
           }}
         />
         <div className="relative z-10 mx-auto flex h-full max-w-[1120px] flex-col justify-end px-6 pb-16 sm:px-10 sm:pb-24">
-          <span className="eyebrow fade-up">A creative production house</span>
+          <span className="eyebrow fade-up">Film & photo studio hire · Wembley, London</span>
           <h1
             className="fade-up fade-up-delay-1 mt-5 max-w-[820px] text-4xl leading-[1.05] tracking-[-0.01em] sm:text-6xl"
             data-testid="hero-title"
           >
-            Cinema, portraits and sound
+            One infinity cove.
             <br />
-            crafted inside four studios.
+            Four spaces that transform.
           </h1>
           <p className="fade-up fade-up-delay-2 muted-copy mt-6 max-w-[560px] text-base sm:text-lg">
-            Oli Cinematics is a premium London-facing production studio. Book a room, hire a crew, or step
-            into a finishing suite — every detail engineered for uncompromising visual work.
+            Oli Cinematics is a production studio in Wembley, London: a seamless white infinity cove and
+            four flexible spaces built on rotating panel sets. Every space books independently — run your
+            podcast while the photo shoot is next door.
           </p>
           <div className="fade-up fade-up-delay-3 mt-10 flex flex-wrap gap-4">
             <Link href="/book" className="btn-primary" data-testid="hero-book-btn">
@@ -48,7 +49,7 @@ export default function Home() {
         <div className="mb-14 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="eyebrow">The Studios</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl">Four rooms. One point of view.</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl">Five spaces. One point of view.</h2>
           </div>
           <Link href="/studios" className="text-[11px] tracking-[0.3em] uppercase text-white/70 hover:text-white" data-testid="home-view-all-spaces">
             View all spaces →
@@ -60,10 +61,10 @@ export default function Home() {
             <Link
               key={space.id}
               href={`/book?space=${space.slug}`}
-              className="card-dark group block overflow-hidden"
+              className={`card-dark group block overflow-hidden ${idx === 0 ? "sm:col-span-2" : ""}`}
               data-testid={`home-space-card-${space.slug}`}
             >
-              <div className="relative h-[260px] w-full overflow-hidden bg-black">
+              <div className={`relative w-full overflow-hidden bg-black ${idx === 0 ? "h-[320px]" : "h-[260px]"}`}>
                 <Image
                   src={space.image}
                   alt={space.name}
@@ -82,7 +83,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between px-6 py-5">
                 <span className="text-[11px] tracking-[0.28em] uppercase text-white/60">
-                  From ${(space.hourlyRate / 100).toFixed(0)}/hr
+                  From £{(space.hourlyRate / 100).toFixed(0)}/hr
                 </span>
                 <span className="text-[11px] tracking-[0.28em] uppercase text-white/80 group-hover:text-white">
                   Reserve →
@@ -105,7 +106,7 @@ export default function Home() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {[
-              { t: "Studio Hire", d: "Flexible stages, lighting rigs, and blackout capability for production teams." },
+              { t: "Studio Hire", d: "An infinity cove and four flexible panel-set spaces, each bookable on its own." },
               { t: "Photography", d: "Directed portrait and branded photography with polished post workflows." },
               { t: "Video Production", d: "Cinematic filming and editing for brand films, campaigns and social." },
             ].map((item, i) => (

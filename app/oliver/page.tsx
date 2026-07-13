@@ -14,9 +14,9 @@ export default function OliverPage() {
             <span className="eyebrow">Meet the founder</span>
             <h1 className="mt-4 text-4xl sm:text-5xl">Oliver.</h1>
             <p className="muted-copy mt-6">
-              Oliver is a videographer with a filmmaker&apos;s instinct for story, motion, and the small
-              details that make footage feel premium. He runs every project with a director&apos;s eye and a
-              craftsman&apos;s patience.
+              Oliver is a videographer, editor and photographer with a filmmaker&apos;s instinct for story,
+              motion, and the small details that make footage feel premium. He runs every project with a
+              director&apos;s eye and a craftsman&apos;s patience.
             </p>
             <p className="muted-copy mt-5">
               In the edit suite he is fast, extremely capable, and an expert at turning a brief into a

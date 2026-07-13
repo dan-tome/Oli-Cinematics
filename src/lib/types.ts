@@ -8,11 +8,12 @@ export type Space = {
   name: string;
   tagline: string;
   description: string;
-  hourlyRate: number; // in cents
+  hourlyRate: number; // in pence (GBP)
   capacity: string;
   sizeSqft: number;
   features: string[];
   amenities: string[];
+  useCases: string[];
   image: string;
   category: ServiceCategory;
 };
@@ -22,7 +23,7 @@ export type Service = {
   spaceId: string;
   name: string;
   description: string;
-  price: number; // in cents
+  price: number; // in pence (GBP)
   category: ServiceCategory;
   durationMinutes: number;
 };

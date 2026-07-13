@@ -18,10 +18,26 @@
 - **Fonts:** Playfair Display (display) + Inter (body)
 - **Runtime:** Supervisor `frontend-next` running `next dev` on port 3000
 
+## The real studio (context from Daniel, 2026-07-13)
+- One large industrial unit in **Wembley, London**
+- Layout: **1 seamless white infinity cove (flagship) + 4 flexible spaces**
+- Each flex space has **3 large rotating panel sets** — rotating a panel changes the room's look
+  (podcast set, portrait backdrop, product wall) without a rebuild
+- Every space **books individually** so multiple clients (e.g. photography + podcast) can shoot
+  at the same time
+- Oliver is a **videographer, editor and photographer** — space must stay flexible to capture a
+  variety of clients
+- **Kitchen island set** for a chef-influencer client is under negotiation — NOT on the site until
+  confirmed
+- Competitive reference: **Klatch Studio (Park Royal)** — well established; we differentiate on
+  flexibility (rotating sets, independent booking) and transparent online pricing
+
 ## Core Entities
-- **Space:** Studio A/B/C/D with hourlyRate (cents), features, capacity, image
+- **Space:** The Infinity Cove + Space One–Four with hourlyRate (GBP pence), features, amenities,
+  useCases, capacity, image
 - **Service:** 2 packages per space (half day 4h / full day 8h) — price = hourlyRate × hours
-- **Booking:** in-memory; stripeSessionId; status pending/confirmed/cancelled
+- **Booking:** in-memory; spaceId + stripeSessionId; status pending/confirmed/cancelled;
+  availability is per-space (concurrent shoots in different spaces supported)
 
 ## User personas
 - **Studio owner (Oliver):** Wants premium booking & showcase for his production house
@@ -44,9 +60,27 @@
 - Nav: sticky header with desktop links + mobile hamburger; data-testids across all interactive elements
 - next.config.ts: `allowedDevOrigins` for preview hosts
 
+## What's been implemented (v0.3 — 2026-07-13, Klatch-inspired truth pass)
+- Restructured to the real layout: **Infinity Cove + Space One–Four** (5 bookable spaces)
+- Cove-forward copy: seamless white cove, repaint-on-request policy, levelled floor, blackout
+- Rotating panel sets described on every flex space + "books independently" messaging
+- `/studios`: amenities rendered, "Popular for" use-case chips, **comparison table**, **FAQ section**
+- Location stated: Wembley, London (hero, contact, metadata) — exact address shared on booking
+- Currency switched to **GBP** (£ display, Stripe `currency: "gbp"`)
+- Availability + checkout are space-aware and duration-aware (see v0.2 fixes)
+
+## Placeholder data — CONFIRM WITH OLIVER before launch
+- Hourly rates (cove £150/hr, flex spaces £85/hr) and half/full-day pricing
+- Footprints (cove 1,400 sqft, spaces 650 sqft) and capacities
+- Amenities per space (seating, tea & coffee, wardrobe rail, WiFi)
+- Cove repaint policy & whether a charge applies
+- Space names (currently "The Infinity Cove", "Space One–Four") — all in `src/data/spaces.ts`
+
 ## Deferred / mocked in Alpha
 - Stripe checkout (500 "Stripe is not configured" until STRIPE_SECRET_KEY provided) — MOCKED
 - Contact form email delivery — MOCKED (console.log only)
+- Kitchen island set (chef-influencer client) — subject to negotiation; add a "Space" entry +
+  photography once confirmed
 
 ## P0 backlog
 - Wire Stripe keys (STRIPE_SECRET_KEY, NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, STRIPE_WEBHOOK_SECRET) → live checkout

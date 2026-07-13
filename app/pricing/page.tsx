@@ -13,15 +13,15 @@ export default function PricingPage() {
           <span className="eyebrow">Pricing</span>
           <h1 className="mt-4 text-4xl sm:text-5xl">Transparent by the hour.</h1>
           <p className="muted-copy mt-6 text-lg">
-            Every studio bills by the hour with two-hour minimums. Half-day and full-day packages are
-            wrapped into the booking flow. Crew, kit and edit hours are quoted separately once we scope
-            your brief.
+            Every space bills by the hour and books as a half-day or full-day session. Crew, kit, set
+            styling and edit hours are quoted separately once we scope your brief — and a fresh cove
+            repaint can be arranged when you book.
           </p>
         </div>
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2">
           {seedSpaces.map((space, idx) => (
-            <div key={space.id} className="card-dark p-8" data-testid={`pricing-space-${space.slug}`}>
+            <div key={space.id} className={`card-dark p-8 ${idx === 0 ? "sm:col-span-2" : ""}`} data-testid={`pricing-space-${space.slug}`}>
               <div className="flex items-center justify-between">
                 <span className="eyebrow">Space 0{idx + 1}</span>
                 <span className="text-xs tracking-[0.24em] uppercase text-white/60">{space.category}</span>
@@ -31,14 +31,14 @@ export default function PricingPage() {
 
               <div className="mt-8 flex items-end gap-2">
                 <span className="text-5xl" style={{ fontFamily: "var(--font-playfair)" }}>
-                  ${(space.hourlyRate / 100).toFixed(0)}
+                  £{(space.hourlyRate / 100).toFixed(0)}
                 </span>
                 <span className="mb-2 text-xs tracking-[0.28em] uppercase text-white/50">/ hour</span>
               </div>
 
               <ul className="mt-6 space-y-2 text-sm text-white/80">
-                <li>Half day (4h) — ${((space.hourlyRate * 4) / 100).toFixed(0)}</li>
-                <li>Full day (8h) — ${((space.hourlyRate * 8) / 100).toFixed(0)}</li>
+                <li>Half day (4h) — £{((space.hourlyRate * 4) / 100).toFixed(0)}</li>
+                <li>Full day (8h) — £{((space.hourlyRate * 8) / 100).toFixed(0)}</li>
                 <li>{space.capacity}</li>
                 <li>{space.sizeSqft.toLocaleString()} sqft</li>
               </ul>

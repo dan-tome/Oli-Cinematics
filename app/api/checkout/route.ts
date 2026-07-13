@@ -81,7 +81,7 @@ export async function POST(request: Request) {
       {
         quantity: 1,
         price_data: {
-          currency: "usd",
+          currency: "gbp",
           unit_amount: service.price,
           product_data: {
             name: service.name,
