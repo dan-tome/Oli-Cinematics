@@ -69,7 +69,7 @@ export const seedSpaces: Space[] = [
     ],
     amenities: ["Wardrobe rail", "Tea & coffee", "WiFi"],
     useCases: ["Portraits", "Look-books", "Headshots", "Editorial"],
-    image: "/images/studio-b.svg",
+    image: "/images/space-two.jpg",
     category: "Photography",
   },
   {
