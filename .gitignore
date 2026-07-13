@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated build metadata (recreated by predev/prebuild)
+/src/generated/build-meta.ts
