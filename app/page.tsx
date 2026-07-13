@@ -28,11 +28,6 @@ export default function Home() {
             <br />
             Four spaces that transform.
           </h1>
-          <p className="fade-up fade-up-delay-2 mt-6 max-w-[560px] text-base leading-relaxed text-black/70 sm:text-lg">
-            Oli Cinematics is a production studio in Wembley, London: a seamless white infinity cove and
-            four flexible spaces built on rotating panel sets. Every space books independently — run your
-            podcast while the photo shoot is next door.
-          </p>
           <div className="fade-up fade-up-delay-3 mt-10 flex flex-wrap gap-4">
             <Link href="/book" className="btn-dark" data-testid="hero-book-btn">
               Book a Space
