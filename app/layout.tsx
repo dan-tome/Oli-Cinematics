@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   description: "Studio booking and portfolio",
   manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/logo-mark-original.png",
-    shortcut: "/logo-mark-original.png",
-    apple: "/logo-mark-original.png",
+    icon: "/logo-mark-bw.png",
+    shortcut: "/logo-mark-bw.png",
+    apple: "/logo-mark-bw.png",
   },
   appleWebApp: {
     capable: true,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d4039",
+  themeColor: "#000000",
 };
 
 const currentYear = new Date().getFullYear();
@@ -46,10 +46,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <PwaRegister />
         <div className="flex-1">{children}</div>
-        <footer className="border-t border-white/10 bg-[#0a3631] px-6 py-6 text-center">
-          <p className="text-xs tracking-[0.22em] text-white/80 uppercase">Built by Daniel</p>
-          <p className="mt-2 text-[11px] tracking-[0.12em] text-white/60 uppercase">
-            Version {buildVersion} · {currentYear}
+        <footer className="border-t border-white/10 bg-black px-6 py-8 text-center">
+          <p className="text-[10px] tracking-[0.42em] text-white/70 uppercase">Oli Cinematics · Built by Daniel</p>
+          <p className="mt-2 text-[10px] tracking-[0.24em] text-white/40 uppercase">
+            v{buildVersion} · {currentYear}
           </p>
           <InstallAppButton />
         </footer>

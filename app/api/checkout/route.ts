@@ -12,6 +12,7 @@ const bodySchema = z.object({
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   slotStart: z.string().datetime(),
   customerEmail: z.string().email(),
+  customerName: z.string().optional(),
 });
 
 function overlapsWithBuffer(
@@ -86,6 +87,7 @@ export async function POST(request: Request) {
       slotStart: startTime,
       slotEnd: endTime,
       customerEmail: parsed.data.customerEmail,
+      customerName: parsed.data.customerName ?? "",
     },
     success_url: `${APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${APP_URL}/cancel`,

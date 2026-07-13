@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: [
+    "*.preview.emergentagent.com",
+    "*.preview.emergentcf.cloud",
+    "*.cluster-2.preview.emergentcf.cloud",
+  ],
 };
 
 export default nextConfig;

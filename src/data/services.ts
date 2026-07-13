@@ -1,28 +1,27 @@
 import type { Service } from "@/src/lib/types";
+import { seedSpaces } from "@/src/data/spaces";
 
-export const seedServices: Service[] = [
-  {
-    id: "prod_studio_4h",
-    name: "Studio Session - 4 Hours",
-    description: "Full access to lighting rig and backdrop.",
-    price: 8000,
-    category: "Studio",
-    durationMinutes: 240,
-  },
-  {
-    id: "prod_portrait_2h",
-    name: "Portrait Photography - 2 Hours",
-    description: "Directed portrait session with post-processing.",
-    price: 6500,
-    category: "Photography",
-    durationMinutes: 120,
-  },
-  {
-    id: "prod_edit_3h",
-    name: "Video Edit Suite - 3 Hours",
-    description: "Color and edit suite booking with operator support.",
-    price: 9000,
-    category: "Video",
-    durationMinutes: 180,
-  },
+// Booking packages per space. Prices are hourlyRate * duration.
+type PackageTemplate = {
+  key: string;
+  label: string;
+  durationMinutes: number;
+  descriptor: string;
+};
+
+const packages: PackageTemplate[] = [
+  { key: "half", label: "Half Day", durationMinutes: 240, descriptor: "4-hour block" },
+  { key: "full", label: "Full Day", durationMinutes: 480, descriptor: "8-hour block" },
 ];
+
+export const seedServices: Service[] = seedSpaces.flatMap((space) =>
+  packages.map((pkg) => ({
+    id: `svc_${space.slug}_${pkg.key}`,
+    spaceId: space.id,
+    name: `${space.name} — ${pkg.label}`,
+    description: `${pkg.descriptor} inside ${space.name} (${space.tagline}).`,
+    price: Math.round((space.hourlyRate * pkg.durationMinutes) / 60),
+    category: space.category,
+    durationMinutes: pkg.durationMinutes,
+  })),
+);

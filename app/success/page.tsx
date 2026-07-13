@@ -5,18 +5,18 @@ export default function SuccessPage() {
   return (
     <div className="min-h-screen">
       <SiteChrome />
-      <div className="h-[170px] sm:h-[280px]" />
-      <section className="content-shell">
-        <h1 className="mb-6 text-3xl tracking-[0.2em] uppercase">Booking Confirmed</h1>
-        <p className="muted-copy mb-10">
-          Payment completed. Your booking is now confirmed and locked in.
+      <div className="h-[110px] sm:h-[140px]" />
+      <section className="narrow-shell text-center">
+        <span className="eyebrow">Confirmed</span>
+        <h1 className="mt-4 text-4xl sm:text-5xl">You&apos;re booked in.</h1>
+        <p className="muted-copy mt-6">
+          Payment received. A confirmation email is on the way with your booking details, location and
+          crew brief instructions.
         </p>
-        <Link
-          href="/"
-          className="inline-block border border-white px-8 py-4 text-xs tracking-[0.3em] uppercase transition hover:bg-white hover:text-[#163b33]"
-        >
-          Back to Home
-        </Link>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Link href="/" className="btn-ghost">Back to home</Link>
+          <Link href="/studios" className="btn-primary">Explore more spaces</Link>
+        </div>
       </section>
     </div>
   );

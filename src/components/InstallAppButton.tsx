@@ -65,7 +65,7 @@ export function InstallAppButton() {
       <button
         type="button"
         onClick={() => void handleInstall()}
-        className="border border-white/30 px-4 py-2 text-[10px] tracking-[0.2em] text-white/85 uppercase transition hover:bg-white hover:text-[#0d4039]"
+        className="border border-white/30 px-4 py-2 text-[10px] tracking-[0.2em] text-white/85 uppercase transition hover:bg-white hover:text-black"
       >
         Install App
       </button>

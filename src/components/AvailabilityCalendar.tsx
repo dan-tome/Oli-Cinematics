@@ -5,14 +5,16 @@ type AvailabilityCalendarProps = {
 
 export function AvailabilityCalendar({ value, onChange }: AvailabilityCalendarProps) {
   return (
-    <div className="space-y-2 text-left">
-      <label className="block text-xs tracking-[0.2em] text-white/70 uppercase">Choose date</label>
+    <div className="space-y-3">
+      <label className="eyebrow block">Date</label>
       <input
         type="date"
+        data-testid="date-input"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full border border-white/20 bg-white/5 px-4 py-3 text-white outline-none focus:border-white/40"
+        className="input-dark"
       />
+      <p className="text-[11px] text-white/40">Studio hours 09:00 – 18:00 · 30-min changeover after each session.</p>
     </div>
   );
 }
