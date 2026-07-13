@@ -15,29 +15,29 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.78) 100%), url('/images/infinity-cove.jpg')",
+              "linear-gradient(96deg, rgba(246,244,240,0.9) 0%, rgba(246,244,240,0.62) 38%, rgba(246,244,240,0.12) 62%, rgba(246,244,240,0) 75%), url('/images/infinity-cove.jpg')",
           }}
         />
         <div className="relative z-10 mx-auto flex h-full max-w-[1120px] flex-col justify-end px-6 pb-16 sm:px-10 sm:pb-24">
-          <span className="eyebrow fade-up">Film & photo studio hire · Wembley, London</span>
+          <span className="eyebrow fade-up !text-black/60">Film & photo studio hire · Wembley, London</span>
           <h1
-            className="fade-up fade-up-delay-1 mt-5 max-w-[820px] text-4xl leading-[1.05] tracking-[-0.01em] sm:text-6xl"
+            className="fade-up fade-up-delay-1 mt-5 max-w-[820px] text-4xl leading-[1.05] tracking-[-0.01em] text-[#0d0d0d] sm:text-6xl"
             data-testid="hero-title"
           >
             One infinity cove.
             <br />
             Four spaces that transform.
           </h1>
-          <p className="fade-up fade-up-delay-2 muted-copy mt-6 max-w-[560px] text-base sm:text-lg">
+          <p className="fade-up fade-up-delay-2 mt-6 max-w-[560px] text-base leading-relaxed text-black/70 sm:text-lg">
             Oli Cinematics is a production studio in Wembley, London: a seamless white infinity cove and
             four flexible spaces built on rotating panel sets. Every space books independently — run your
             podcast while the photo shoot is next door.
           </p>
           <div className="fade-up fade-up-delay-3 mt-10 flex flex-wrap gap-4">
-            <Link href="/book" className="btn-primary" data-testid="hero-book-btn">
+            <Link href="/book" className="btn-dark" data-testid="hero-book-btn">
               Book a Space
             </Link>
-            <Link href="/studios" className="btn-ghost" data-testid="hero-explore-btn">
+            <Link href="/studios" className="btn-dark-ghost" data-testid="hero-explore-btn">
               Explore Spaces
             </Link>
           </div>
@@ -70,9 +70,9 @@ export default function Home() {
                   alt={space.name}
                   width={1200}
                   height={800}
-                  className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
                   <div>
                     <span className="eyebrow">0{idx + 1}</span>

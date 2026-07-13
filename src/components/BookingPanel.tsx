@@ -177,9 +177,9 @@ export function BookingPanel() {
                     alt={space.name}
                     width={800}
                     height={500}
-                    className="h-full w-full object-cover opacity-80"
+                    className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
                 </div>
                 <div className="p-4">
                   <p className="eyebrow">{space.tagline}</p>
