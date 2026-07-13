@@ -1,7 +1,7 @@
 import { addDays } from "date-fns";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { bookingRangeFromSlot } from "@/src/lib/booking/availability";
+import { bookingRangeFromSlot, bookingsForSpace, businessDayEnd } from "@/src/lib/booking/availability";
 import { BOOKING_CONFIG } from "@/src/lib/booking/config";
 import { bookingsRepo } from "@/src/lib/repositories/bookingsRepo";
 import { servicesRepo } from "@/src/lib/repositories/servicesRepo";
@@ -44,13 +44,21 @@ export async function POST(request: Request) {
 
   const { startTime, endTime } = bookingRangeFromSlot(parsed.data.slotStart, service.durationMinutes);
   const day = new Date(`${parsed.data.date}T00:00:00`);
-  const existingBookings = await bookingsRepo.listByDateRange(
-    day.toISOString(),
-    addDays(day, 1).toISOString(),
-  );
 
-  const hasConflict = existingBookings.some((booking) =>
-    overlapsWithBuffer(startTime, endTime, booking),
+  if (new Date(endTime) > businessDayEnd(new Date(startTime))) {
+    return NextResponse.json(
+      { error: "Selected package does not fit within studio hours for that start time." },
+      { status: 400 },
+    );
+  }
+
+  const [existingBookings, services] = await Promise.all([
+    bookingsRepo.listByDateRange(day.toISOString(), addDays(day, 1).toISOString()),
+    servicesRepo.list(),
+  ]);
+
+  const hasConflict = bookingsForSpace(existingBookings, service.spaceId, services).some(
+    (booking) => overlapsWithBuffer(startTime, endTime, booking),
   );
   if (hasConflict) {
     return NextResponse.json(
@@ -84,6 +92,7 @@ export async function POST(request: Request) {
     ],
     metadata: {
       serviceId: service.id,
+      spaceId: service.spaceId,
       slotStart: startTime,
       slotEnd: endTime,
       customerEmail: parsed.data.customerEmail,
@@ -96,6 +105,7 @@ export async function POST(request: Request) {
   await bookingsRepo.create({
     customerEmail: parsed.data.customerEmail,
     serviceId: service.id,
+    spaceId: service.spaceId,
     startTime,
     endTime,
     status: "pending",

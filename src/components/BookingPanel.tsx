@@ -46,19 +46,23 @@ export function BookingPanel() {
   // load spaces + services once
   useEffect(() => {
     const loadData = async () => {
-      const [spRes, svRes] = await Promise.all([
-        fetch("/api/spaces").then((r) => r.json()),
-        fetch("/api/services").then((r) => r.json()),
-      ]);
-      const spList: Space[] = spRes.spaces ?? [];
-      const svList: Service[] = svRes.services ?? [];
-      setSpaces(spList);
-      setServices(svList);
+      try {
+        const [spRes, svRes] = await Promise.all([
+          fetch("/api/spaces").then((r) => r.json()),
+          fetch("/api/services").then((r) => r.json()),
+        ]);
+        const spList: Space[] = spRes.spaces ?? [];
+        const svList: Service[] = svRes.services ?? [];
+        setSpaces(spList);
+        setServices(svList);
 
-      const preselect = initialSpace
-        ? spList.find((s) => s.slug === initialSpace)?.id
-        : spList[0]?.id;
-      if (preselect) setSelectedSpaceId(preselect);
+        const preselect = initialSpace
+          ? spList.find((s) => s.slug === initialSpace)?.id
+          : spList[0]?.id;
+        if (preselect) setSelectedSpaceId(preselect);
+      } catch {
+        setError("Unable to load the studios right now. Please refresh and try again.");
+      }
     };
     void loadData();
   }, [initialSpace]);

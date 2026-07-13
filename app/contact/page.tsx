@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SiteChrome } from "@/src/components/layout/SiteChrome";
 
-type FormState = "idle" | "sending" | "sent" | "error";
+type FormState = "idle" | "sending" | "sent" | "invalid" | "failed";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) {
-      setState("error");
+      setState("invalid");
       return;
     }
     setState("sending");
@@ -29,7 +29,7 @@ export default function ContactPage() {
       setState("sent");
       setName(""); setEmail(""); setProject(""); setMessage("");
     } catch {
-      setState("error");
+      setState("failed");
     }
   };
 
@@ -69,8 +69,11 @@ export default function ContactPage() {
 
           <form onSubmit={handleSubmit} className="grid gap-5" data-testid="contact-form">
             <div>
-              <label className="eyebrow mb-2 block">Full name</label>
+              <label htmlFor="contact-name" className="eyebrow mb-2 block">Full name</label>
               <input
+                id="contact-name"
+                name="name"
+                required
                 data-testid="contact-name"
                 className="input-dark"
                 value={name}
@@ -78,9 +81,12 @@ export default function ContactPage() {
               />
             </div>
             <div>
-              <label className="eyebrow mb-2 block">Email</label>
+              <label htmlFor="contact-email" className="eyebrow mb-2 block">Email</label>
               <input
+                id="contact-email"
+                name="email"
                 type="email"
+                required
                 data-testid="contact-email"
                 className="input-dark"
                 value={email}
@@ -88,8 +94,10 @@ export default function ContactPage() {
               />
             </div>
             <div>
-              <label className="eyebrow mb-2 block">Project type</label>
+              <label htmlFor="contact-project" className="eyebrow mb-2 block">Project type</label>
               <input
+                id="contact-project"
+                name="project"
                 data-testid="contact-project"
                 className="input-dark"
                 value={project}
@@ -98,8 +106,11 @@ export default function ContactPage() {
               />
             </div>
             <div>
-              <label className="eyebrow mb-2 block">Your vision</label>
+              <label htmlFor="contact-message" className="eyebrow mb-2 block">Your vision</label>
               <textarea
+                id="contact-message"
+                name="message"
+                required
                 data-testid="contact-message"
                 rows={6}
                 className="input-dark resize-none"
@@ -123,9 +134,15 @@ export default function ContactPage() {
                 Thanks — your message is in. We&apos;ll reply within one working day.
               </p>
             )}
-            {state === "error" && (
+            {state === "invalid" && (
               <p className="text-sm text-red-300" data-testid="contact-error">
                 Please fill in your name, email and message before sending.
+              </p>
+            )}
+            {state === "failed" && (
+              <p className="text-sm text-red-300" data-testid="contact-error">
+                Something went wrong sending your message. Please try again, or email us directly at
+                hello@olicinematics.com.
               </p>
             )}
           </form>

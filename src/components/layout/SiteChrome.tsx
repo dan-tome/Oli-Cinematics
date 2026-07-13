@@ -26,10 +26,6 @@ export function SiteChrome() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
     <>
       <nav
@@ -110,6 +106,7 @@ export function SiteChrome() {
             key={item.href}
             href={item.href}
             data-testid={`nav-mobile-link-${item.label.toLowerCase()}`}
+            onClick={() => setOpen(false)}
             className="block px-6 py-4 text-[11px] tracking-[0.32em] text-white/80 uppercase transition hover:bg-white/5 hover:text-white"
           >
             {item.label}

@@ -4,6 +4,7 @@ import type { Booking, BookingStatus } from "@/src/lib/types";
 export interface CreateBookingInput {
   customerEmail: string;
   serviceId: string;
+  spaceId?: string;
   startTime: string;
   endTime: string;
   status: BookingStatus;
@@ -42,6 +43,7 @@ class InMemoryBookingsRepo implements BookingsRepo {
       id: `book_${crypto.randomUUID()}`,
       customerEmail: input.customerEmail,
       serviceId: input.serviceId,
+      spaceId: input.spaceId,
       startTime: input.startTime,
       endTime: input.endTime,
       status: input.status,

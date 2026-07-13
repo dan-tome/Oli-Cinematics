@@ -1,7 +1,7 @@
 import { addDays, format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { calculateAvailability } from "@/src/lib/booking/availability";
+import { bookingsForSpace, calculateAvailability } from "@/src/lib/booking/availability";
 import { bookingsRepo } from "@/src/lib/repositories/bookingsRepo";
 import { servicesRepo } from "@/src/lib/repositories/servicesRepo";
 
@@ -32,8 +32,12 @@ export async function GET(request: NextRequest) {
 
   const startIso = day.toISOString();
   const endIso = addDays(day, 1).toISOString();
-  const bookings = await bookingsRepo.listByDateRange(startIso, endIso);
-  const slots = calculateAvailability(day, bookings);
+  const [bookings, services] = await Promise.all([
+    bookingsRepo.listByDateRange(startIso, endIso),
+    servicesRepo.list(),
+  ]);
+  const spaceBookings = bookingsForSpace(bookings, service.spaceId, services);
+  const slots = calculateAvailability(day, spaceBookings, service.durationMinutes);
 
   return NextResponse.json({
     date: format(day, "yyyy-MM-dd"),
